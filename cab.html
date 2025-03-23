@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Cab Booking</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f4; }
+        .container { max-width: 400px; margin: auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        input, select, button { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
+        button { background-color: #28a745; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #218838; }
+    </style>
+</head>
+<body>
+    <h2>Book a Cab</h2>
+    <div class="container">
+        <label>Pickup Location:</label>
+        <input type="text" id="pickup" placeholder="Enter pickup location">
+        
+        <label>Drop Location:</label>
+        <input type="text" id="drop" placeholder="Enter drop location">
+        
+        <label>Cab Type:</label>
+        <select id="cabType">
+            <option value="Sedan">Sedan</option>
+            <option value="Innova">Innova</option>
+            <option value="Traveller">Traveller</option>
+        </select>
+        
+        <button onclick="bookCab()">Book Now</button>
+        <p id="output"></p>
+    </div>
+    
+    <script>
+        function bookCab() {
+            let pickup = document.getElementById("pickup").value;
+            let drop = document.getElementById("drop").value;
+            let cabType = document.getElementById("cabType").value;
+            
+            if (pickup === "" || drop === "") {
+                alert("Please enter both pickup and drop locations");
+                return;
+            }
+            let fare = cabType === "Sedan" ? 250 : cabType === "Innova" ?  500 : 1000;
+            document.getElementById("output").innerHTML = `Cab booked! ${cabType} from ${pickup} to ${drop}. Estimated Fare: ${fare}`;
+         }
+    </script>
+</body>
+</html>
